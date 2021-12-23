@@ -7,7 +7,8 @@ let scope = "Private" | "Public"
 let comment = "'" [^'\r' '\n']* nl as c
 let con = ' ' comment | nl
 let n = ['0'-'9']+
-let sym = ['=' '+' '-' '*' '/' '&' '.' '(' ',' ')']
+(* FIXME handle : correctly *)
+let sym = ['=' '+' '-' '*' '/' '^' '&' '.' '(' ',' ')' ':' '<' '>']
 
 rule string = parse
 | [^'"']+ as x { print_string x; string lexbuf }
