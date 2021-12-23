@@ -91,6 +91,7 @@ and compile = parse
 	compile lexbuf
 }
 | "GoTo" { failwith "GoTo aren't supported in VBScript" }
+| "Debug.Print" { print_string "WScript.Echo"; compile lexbuf }
 | '"' as x { print_char x; string lexbuf }
 | sp | id | sym | n as x { print_string x; compile lexbuf }
 | (id as x) '$' { print_string x; compile lexbuf }
